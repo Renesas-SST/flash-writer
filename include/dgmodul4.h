@@ -26,6 +26,7 @@
 
 #define	SA_256KB			0x40000
 #define	SA_64KB				0x10000
+#define	SA_4KB				0x01000
 
 #define	TOTAL_SIZE_256MB		0x10000000
 #define	TOTAL_SIZE_128MB		0x08000000
@@ -39,6 +40,9 @@
 #define	MACRONIX_MANUFACTURER_ID	0xC2	/* Macronix	*/
 #define	MICRON_MANUFACTURER_ID		0x20	/* Micron	*/
 #define	DIALOG_MANUFACTURER_ID		0x1F	/* Dialog	*/
+#define	ISS_MANUFACTURER_ID		0x9D    /* ISS          */
+
+#define	DEVICE_ID_IS25WP256		0x7019
 
 #define	DEVICE_ID_S25FS128S		0x2018
 #define	DEVICE_ID_S25FS512S		0x0220

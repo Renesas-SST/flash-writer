@@ -9,7 +9,12 @@
 #include	<cpg.h>
 #include "cpudrv.h"
 
-#if (DDR4 == 1)
+/* Use ISS DDR Parameters */
+#if (1)
+#include "param_mc_issi8.c"
+#include "param_swizzle_issi8.c"
+
+#elif (DDR4 == 1)
 
 #if (DDR_SIZE_4GB == 1)
 #include "param_mc_C-010_D4-01-1.c"

@@ -8,7 +8,16 @@ ifeq ("$(BOARD)", "")
 BOARD = RZG2L_SMARC
 endif
 
-ifeq ("$(BOARD)", "RZG2L_SMARC")
+ifeq ("$(BOARD)", "RZG2L_SBC")
+#--------------------------------------
+# RZ/G2L SBC board
+#--------------------------------------
+FILENAME_ADD = _RZG2L_SBC
+DEVICE   = RZG2L
+DDR_TYPE = DDR4
+DDR_SIZE = 1GB
+SWIZZLE  = T1C
+else ifeq ("$(BOARD)", "RZG2L_SMARC")
 #--------------------------------------
 # RZ/G2L Smarc board
 #--------------------------------------

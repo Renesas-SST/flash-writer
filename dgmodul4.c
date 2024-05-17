@@ -245,6 +245,20 @@ static uint32_t CheckQspiFlashId(void)
 				break;
 			}
 		break;
+		case ISS_MANUFACTURER_ID:
+			PutStr(" ISS : ", 0);
+			switch(deviceId)
+			{
+				case DEVICE_ID_IS25WP256:
+						PutStr("IS25WP256", 1);
+						gQspi_sa_size    = SA_4KB;
+						gQspi_end_addess = TOTAL_SIZE_32MB - 0x8000 - 1;
+				break;
+				default:
+					ret = -1;
+				break;
+			}
+		break;
 		default:
 			ret = 1;
 		break;
