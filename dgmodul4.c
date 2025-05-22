@@ -12,6 +12,7 @@
 #include "ramckmdl.h"
 #include "devdrv.h"
 #include "dgmodul1.h"
+#include "memory_cmd.h"
 #include "bit.h"
 #include <string.h>
 
@@ -25,6 +26,8 @@ uint32_t	gQspi_sa_size;
 uint32_t	gQspi_end_addess;
 
 extern char gKeyBuf[64];
+extern uintptr_t gUDump[3];
+extern uintptr_t gUMem[3];
 
 static char dgLS_Load_Offset(uint32_t *maxADD ,uint32_t *minADD, uint32_t prgStatAdd);
 static char dgLS_Load_And_Write_LowMemory(uint32_t spiStartAdd, uint32_t *spiEndAdd, uint32_t prgStatAdd);
@@ -573,10 +576,10 @@ void mem_copy(uint32_t prgStartAd, uint32_t sector_Ad, uint32_t accessSize)
 }
 
 /****************************************************************
-	MODULE			: dgG2InfoSpiflash0_BP		*
-	FUNCTION		: read BP spi Spiflash memory	*
-	COMMAND			: XINFO_BP			*
-	INPUT PARAMETER		: XINFO_BP			*
+    MODULE          : dgG2InfoSpiflash0_BP                      *
+    FUNCTION        : read BP spi Spiflash memory               *
+    COMMAND         : XINFO_BP                                  *
+    INPUT PARAMETER : XINFO_BP                                  *
 *****************************************************************/
 void dgG2InfoSpiflash0_BP(void)
 {
@@ -604,10 +607,10 @@ void dgG2InfoSpiflash0_BP(void)
 }
 
 /****************************************************************
-	MODULE			: dgG2InfoSpiflash0_BP_S	*
-	FUNCTION		: set BP spi Spiflash memory	*
-	COMMAND			: XINFO_BP_S			*
-	INPUT PARAMETER		: XINFO_BP_S		 	*
+    MODULE          : dgG2InfoSpiflash0_BP_S                    *
+    FUNCTION        : set BP spi Spiflash memory                *
+    COMMAND         : XINFO_BP_S                                *
+    INPUT PARAMETER : XINFO_BP_S                                *
 *****************************************************************/
 void dgG2InfoSpiflash0_BP_S(void)
 {
@@ -657,10 +660,10 @@ void dgG2InfoSpiflash0_BP_S(void)
 }
 
 /********************************************************
-	MODULE			: dgClearSpiflash0	*
-	FUNCTION		: Clear Spiflash memory	*
-	COMMAND			: CS			*
-	INPUT PARAMETER		: CS			*
+    MODULE          : dgClearSpiflash0                  *
+    FUNCTION        : Clear Spiflash memory             *
+    COMMAND         : CS                                *
+    INPUT PARAMETER : CS                                *
 *********************************************************/
 void dgClearSpiflash0(void)
 {
@@ -693,6 +696,90 @@ void dgClearSpiflash0(void)
 	else
 	{
 		PutStr(" Fail!", 1);
+	}
+}
+
+/****************************************************************
+    MODULE          : dgDisplayQspiData                         *
+    FUNCTION        : QSPI memory read                          *
+    COMMAND         : XRS                                       *
+    INPUT PARAMETER : XRS  {sadr {eadr}}                        *
+*****************************************************************/
+void dgDisplayQspiData(void)
+{
+	uintptr_t qspiStartAdd, qspiEndAdd;
+	char decRtn;
+
+	/* Init Dump Parameter */
+	qspiStartAdd = gUDump[0];	/* Start Address */
+	qspiEndAdd = gUDump[1];		/* End Address */
+	decRtn = DecodeForm01(&qspiStartAdd, &qspiEndAdd);	/* Format check */
+
+	if (decRtn == 1)
+	{
+		PutStr("Syntax Error", 1);
+	}
+	if (decRtn == 2)
+	{
+		PutStr("Address Size Error", 1);
+	}
+	if (decRtn == 0)
+	{
+		PutStr("READING SPI-FLASH DATA.......",0);
+		PutStr("",1);
+		PutStr("======= Qspi Read Information  =================",1);
+
+		char buf[32], asciiBuf[20];
+		uintptr_t readAdd, readData;
+		uint32_t  blankCnt, byte_count;
+
+		byte_count = 0x0;
+
+		/********* Dump Data 1Line All Display *********************/
+		if (!((qspiEndAdd & 0x0000000F) == 0x0000000F))
+		{
+			qspiEndAdd = qspiEndAdd | 0x0000000F;
+		}
+		for (readAdd = qspiStartAdd; readAdd <= (qspiStartAdd+qspiEndAdd); readAdd += 1)
+		{
+			/********* Dump Address Display ************************/
+			if ((!(byte_count & 0x0000000F)) || (byte_count == 0))
+			{
+				Data2HexAscii_64(readAdd,buf,CPU_BYTE_SIZE);
+				PutStr(buf, 0);
+				PutStr("  ", 0);
+			}
+			SingleFastReadQspiFlashData1Byte(readAdd, (uint32_t *) &readData);
+			Data2HexAscii_64(readData, buf, (char)1);
+			ChgDumpAsciiCode(readData, asciiBuf, (char)(byte_count & 0xF), (char)1);
+			/********* Dump Data Display blank ********************/
+			if (!(byte_count & 0x8))
+			{
+				PutStr(buf, 0);
+				for (blankCnt = 0; blankCnt < 1; blankCnt++)
+				{
+					PutStr(" ",0);
+				}
+			}
+			else
+			{
+				for (blankCnt = 0; blankCnt < 1; blankCnt++)
+				{
+					PutStr(" ",0);
+				}
+				PutStr(buf, 0);
+			}
+            /********* Dump Data Display blank ********************/
+			if ((byte_count & 0xF) == 0xF)
+			{
+				ChgDumpAsciiStr(asciiBuf);
+				PutStr("  ", 0);
+				PutStr(asciiBuf, 1);
+			}
+			byte_count += 1;
+		}
+		PutStr("===========================================================",1);
+		PutStr("",1);
 	}
 }
 
@@ -838,10 +925,10 @@ static void XLoadSpiflash0_2(uint32_t mode)
 }
 
 /****************************************************************
-	MODULE		: dgG2LoadSpiflash0_3			*
-	FUNCTION	: load Program to Spiflash memory	*
-	COMMAND		: XLS3					*
-	INPUT PARAMETER	: XLS3			 		*
+    MODULE          : dgG2LoadSpiflash0_3                       *
+    FUNCTION        : load Program to Spiflash memory           *
+    COMMAND         : XLS3                                      *
+    INPUT PARAMETER : XLS3                                      *
 *****************************************************************/
 void dgG2LoadSpiflash0_3(void)
 {
@@ -849,10 +936,10 @@ void dgG2LoadSpiflash0_3(void)
 }
 
 /************************************************************************
-	MODULE			: dgG2LoadSpiflash0_2			*
-	FUNCTION		: load Program to Spiflash memory	*
-	COMMAND			: XLS2					*
-	INPUT PARAMETER		: XLS2					*
+    MODULE          : dgG2LoadSpiflash0_2                               *
+    FUNCTION        : load Program to Spiflash memory                   *
+    COMMAND         : XLS2                                              *
+    INPUT PARAMETER : XLS2                                              *
 *************************************************************************/
 void dgG2LoadSpiflash0_2(void)
 {

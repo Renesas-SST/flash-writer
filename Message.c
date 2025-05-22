@@ -32,9 +32,10 @@ const char *const StartMessMonitorA[START_MESS_MON_LINE] = {
 const char *const AllHelpMess[ALL_HELP_MESS_LINE] = {
 #if SERIAL_FLASH == 1
 				"        SPI Flash write command",
-				" XCS            erase program to SPI Flash",
-				" XLS2           write program to SPI Flash",
-				" XLS3           write program to SPI Flash(Binary)",
+				" XCS                         erase program to SPI Flash",
+				" XLS2                        write program to SPI Flash",
+				" XLS3                        write program to SPI Flash(Binary)",
+				" XRS  {sadr {eadr}}          read SPI flash memory",
 				"",
 #endif /* SERIAL_FLASH == 1 */
 #if EMMC == 1

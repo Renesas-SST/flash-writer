@@ -23,7 +23,7 @@ extern uintptr_t gUMem[3];
 extern uint32_t gDumpMode;
 extern uint32_t gDumpStatus;
 
-static void ChgDumpAsciiCode(uintptr_t chCode, char *buf, char chPtr, uint32_t width)
+void ChgDumpAsciiCode(uintptr_t chCode, char *buf, char chPtr, uint32_t width)
 {
 	unsigned char tmpBCode,i;
 	uintptr_t tmpLCode;
@@ -95,7 +95,7 @@ static void ChgDumpAsciiCode(uintptr_t chCode, char *buf, char chPtr, uint32_t w
 	}
 }
 
-static void ChgDumpAsciiStr(char *buf)
+void ChgDumpAsciiStr(char *buf)
 {
 	unsigned char i;
 	buf[18] = 0;

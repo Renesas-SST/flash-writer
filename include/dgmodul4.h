@@ -85,3 +85,4 @@ void dgG2InfoSpiflash0_BP_S(void);
 void dgClearSpiflash0(void);
 void dgG2LoadSpiflash0_2(void);
 void dgG2LoadSpiflash0_3(void);
+void dgDisplayQspiData(void);

@@ -250,6 +250,10 @@ ifeq ("$(DEVICE)", "RZA3UL")
 	CFLAGS += -DRZA3UL=1
 endif
 
+ifeq ("$(BOARD)", "RZG2L_SBC")
+	CFLAGS += -DRZG2L_SBC=1
+endif
+
 ifeq ("$(DDR_TYPE)", "DDR4")
 	CFLAGS += -DDDR4=1
 endif
