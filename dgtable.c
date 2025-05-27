@@ -26,6 +26,7 @@ const com_menu MonCom[COMMAND_UNIT] = {
 	"XCS"			, dgClearSpiflash0		,  0	,
 	"XLS2"			, dgG2LoadSpiflash0_2		,  0	,
 	"XLS3"			, dgG2LoadSpiflash0_3		,  0	,
+	"XRS"			, dgDisplayQspiData		,  0	,
 	"XINFO_BP"		, dgG2InfoSpiflash0_BP		,  0	,
 	"XINFO_BP_S"		, dgG2InfoSpiflash0_BP_S	,  0	,
 #endif /* SERIAL_FLASH == 1 */
