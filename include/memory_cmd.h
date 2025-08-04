@@ -16,5 +16,3 @@ void dgMemEdit_longlong(void);
 void dgFill_byte(void);
 void dgFill_long(void);
 void dgFill_longlong(void);
-void ChgDumpAsciiCode(uintptr_t chCode, char *buf, char chPtr, uint32_t width);
-void ChgDumpAsciiStr(char *buf);

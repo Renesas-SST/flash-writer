@@ -5,7 +5,3 @@
  */
 
 void Main(void);
-void InitMain(void);
-void StartMess( void );
-void DecCom(void);
-long CmpCom(char *str);

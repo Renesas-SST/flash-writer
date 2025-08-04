@@ -374,9 +374,8 @@ SRC_FILE :=				\
 	scifdrv.c			\
 	devdrv.c			\
 	common.c			\
-	dgtable.c			\
 	dgmodul1.c			\
-	memory_cmd.c			\
+	memory_cmd.c		\
 	Message.c			\
 	ramckmdl.c			\
 	cpudrv.c			\

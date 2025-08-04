@@ -9,7 +9,7 @@
 #include "common.h"
 #include "dgtable.h"
 #include "ramckmdl.h"
-#include "devdrv.h"
+#include "io.h"
 #include "ddrcheck.h"
 
 uintptr_t	gErrDdrAdd;

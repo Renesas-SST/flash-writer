@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2021, Renesas Electronics Corporation. All rights reserved.
+# Copyright (c) 2021-2025, Renesas Electronics Corporation. All rights reserved.
 #
 # SPDX-License-Identifier: BSD-3-Clause
 #
@@ -14,6 +14,7 @@ ifeq ("$(BOARD)", "RZG2L_SBC")
 #--------------------------------------
 FILENAME_ADD = _RZG2L_SBC
 DEVICE   = RZG2L
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 1GB
 SWIZZLE  = T1C
@@ -23,6 +24,7 @@ else ifeq ("$(BOARD)", "RZG2L_SMARC")
 #--------------------------------------
 FILENAME_ADD = _RZG2L_SMARC
 DEVICE   = RZG2L
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 2GB
 SWIZZLE  = T1C
@@ -32,6 +34,7 @@ else ifeq ("$(BOARD)", "RZG2L_SMARC_PMIC")
 #--------------------------------------
 FILENAME_ADD = _RZG2L_SMARC_PMIC
 DEVICE   = RZG2L
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 2GB_1PCS
 SWIZZLE  = T1BC
@@ -41,6 +44,7 @@ else ifeq ("$(BOARD)", "RZG2L_15MMSQ_DEV")
 #--------------------------------------
 FILENAME_ADD = _RZG2L_15MMSQ_DEV
 DEVICE   = RZG2L
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 4GB
 SWIZZLE  = T1C
@@ -50,6 +54,7 @@ else ifeq ("$(BOARD)", "RZG2L_21MMSQ_DEV")
 #--------------------------------------
 FILENAME_ADD = _RZG2L_21MMSQ_DEV
 DEVICE   = RZG2L
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 4GB
 SWIZZLE  = T2C
@@ -59,6 +64,7 @@ else ifeq ("$(BOARD)", "RZG2LC_SMARC")
 #--------------------------------------
 FILENAME_ADD = _RZG2LC_SMARC
 DEVICE   = RZG2LC
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 1GB_1PCS
 SWIZZLE  = T3BC
@@ -68,6 +74,7 @@ else ifeq ("$(BOARD)", "RZG2LC_DEV")
 #--------------------------------------
 FILENAME_ADD = _RZG2LC_DEV
 DEVICE   = RZG2LC
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR3L
 DDR_SIZE = 1GB
 SWIZZLE  = T3CL
@@ -77,6 +84,7 @@ else ifeq ("$(BOARD)", "RZG2UL_TYPE1_DEV")
 #--------------------------------------
 FILENAME_ADD = _RZG2UL_TYPE1_DEV
 DEVICE   = RZG2UL
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 1GB_1PCS
 SWIZZLE  = T3BCUD
@@ -87,6 +95,7 @@ else ifeq ("$(BOARD)", "RZG2UL_TYPE1_DDR3L_DEV")
 #--------------------------------------
 FILENAME_ADD = _RZG2UL_TYPE1_DEV
 DEVICE   = RZG2UL
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR3L
 DDR_SIZE = 512MB_1PCS
 SWIZZLE  = T3BCUL
@@ -97,6 +106,7 @@ else ifeq ("$(BOARD)", "RZG2UL_SMARC")
 #--------------------------------------
 FILENAME_ADD = _RZG2UL_SMARC
 DEVICE   = RZG2UL
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 1GB_1PCS
 SWIZZLE  = T3BCUD2
@@ -107,6 +117,7 @@ else ifeq ("$(BOARD)", "RZG2UL_TYPE2_SMARC")
 #--------------------------------------
 FILENAME_ADD = _RZG2UL_TYPE2_SMARC
 DEVICE   = RZG2UL
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 1GB_1PCS
 SWIZZLE  = T3BC
@@ -117,6 +128,7 @@ else ifeq ("$(BOARD)", "RZG2UL_TYPE2_DEV")
 #--------------------------------------
 FILENAME_ADD = _RZG2UL_TYPE2_DEV
 DEVICE   = RZG2UL
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR3L
 DDR_SIZE = 1GB
 SWIZZLE  = T3CL
@@ -127,6 +139,7 @@ else ifeq ("$(BOARD)", "RZV2L_SMARC")
 #--------------------------------------
 FILENAME_ADD = _RZV2L_SMARC
 DEVICE   = RZV2L
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 4GB
 SWIZZLE  = T1C
@@ -136,6 +149,7 @@ else ifeq ("$(BOARD)", "RZV2L_SMARC_PMIC")
 #--------------------------------------
 FILENAME_ADD = _RZV2L_SMARC_PMIC
 DEVICE   = RZV2L
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 2GB_1PCS
 SWIZZLE  = T1BC
@@ -145,6 +159,7 @@ else ifeq ("$(BOARD)", "RZV2L_15MMSQ_DEV")
 #--------------------------------------
 FILENAME_ADD = _RZV2L_15MMSQ_DEV
 DEVICE   = RZV2L
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 4GB
 SWIZZLE  = T1C
@@ -154,6 +169,7 @@ else ifeq ("$(BOARD)", "RZV2L_21MMSQ_DEV")
 #--------------------------------------
 FILENAME_ADD = _RZV2L_21MMSQ_DEV
 DEVICE   = RZV2L
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 4GB
 SWIZZLE  = T2C
@@ -163,6 +179,7 @@ else ifeq ("$(BOARD)", "RZA3UL_DEV")
 #--------------------------------------
 FILENAME_ADD = _RZA3UL_DEV
 DEVICE   = RZA3UL
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 1GB_1PCS
 SWIZZLE  = T3BCUD
@@ -173,6 +190,7 @@ else ifeq ("$(BOARD)", "RZA3UL_DDR3L_DEV")
 #--------------------------------------
 FILENAME_ADD = _RZA3UL_DEV
 DEVICE   = RZA3UL
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR3L
 DDR_SIZE = 512MB_1PCS
 SWIZZLE  = T3BCUL
@@ -183,10 +201,19 @@ else ifeq ("$(BOARD)", "RZA3UL_SMARC")
 #--------------------------------------
 FILENAME_ADD = _RZA3UL_SMARC
 DEVICE   = RZA3UL
+FLASH_TYPE = QSPI
 DDR_TYPE = DDR4
 DDR_SIZE = 1GB_1PCS
 SWIZZLE  = T3BCUD2
 DEVICE_TYPE = 1
+else ifeq ("$(BOARD)", "RZV2H_DEV")
+#--------------------------------------
+# RZ/V2H EVK board
+#--------------------------------------
+FILENAME_ADD = _RZV2H_DEV
+DEVICE   = RZV2H
+FLASH_TYPE = XSPI
+DDR_TYPE = INTERNAL_MEMORY
 endif
 
 # Select SERIAL_FLASH("ENABLE"or"DISABLE" )
@@ -209,14 +236,6 @@ ifeq ("$(EMMC_IOV)", "")
 EMMC_IOV=1_8V
 endif
 
-ifeq ("$(INTERNAL_MEMORY_ONLY)", "")
-INTERNAL_MEMORY_ONLY = DISABLE
-endif
-
-ifeq ("$(INTERNAL_MEMORY_ONLY)", "ENABLE")
-DDR_TYPE = INTERNAL
-endif
-
 #CPU
 CPU     = 
 AArch   = 64
@@ -230,10 +249,17 @@ OUTPUT_DIR  = AArch64_output
 OBJECT_DIR  = AArch64_obj
 CROSS_COMPILE ?= aarch64-elf-
 
-CFLAGS += -O0 -fno-stack-protector -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables
+CFLAGS += -O0 -fno-stack-protector -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-builtin
 BOOT_DEF    = Writer
+ifeq ("$(DDR_TYPE)", "INTERNAL_MEMORY")
+FILE_NAME   = $(OUTPUT_DIR)/Flash_Writer_SCIF$(FILENAME_ADD)_$(DDR_TYPE)
+else
 FILE_NAME   = $(OUTPUT_DIR)/Flash_Writer_SCIF$(FILENAME_ADD)_$(DDR_TYPE)_$(DDR_SIZE)
+endif
 
+ifeq ("$(DEVICE)", "RZV2H")
+	CFLAGS += -DRZV2H=1
+endif
 ifeq ("$(DEVICE)", "RZG2L")
 	CFLAGS += -DRZG2L=1
 endif
@@ -259,6 +285,9 @@ ifeq ("$(DDR_TYPE)", "DDR4")
 endif
 ifeq ("$(DDR_TYPE)", "DDR3L")
 	CFLAGS += -DDDR3L=1
+endif
+ifeq ("$(DDR_TYPE)", "LPDDR4X")
+	CFLAGS += -DDDR4=1
 endif
 
 ifeq ("$(DDR_SIZE)", "4GB")
@@ -341,13 +370,12 @@ ifeq ("$(EMMC_IOV)", "1_8V")
 	CFLAGS += -DEMMC_IO_1_8V=1
 endif
 
-ifeq ("$(INTERNAL_MEMORY_ONLY)", "DISABLE")
-	CFLAGS += -DINTERNAL_MEMORY_ONLY=0
-	LINKER_FILE = memory_writer.def.s
-endif
-ifeq ("$(INTERNAL_MEMORY_ONLY)", "ENABLE")
+ifeq ("$(DDR_TYPE)", "INTERNAL_MEMORY")
 	CFLAGS += -Os -DINTERNAL_MEMORY_ONLY=1
 	LINKER_FILE = memory_writer_internal.def.s
+else
+	CFLAGS += -DINTERNAL_MEMORY_ONLY=0
+	LINKER_FILE = memory_writer.def.s
 endif
 
 ifeq ("$(TRUSTED_BOARD_BOOT)", "ENABLE")
@@ -362,15 +390,23 @@ LIBS        = -L$(subst libc.a, ,$(shell $(CC) -print-file-name=libc.a 2> /dev/n
 LIBS        += -L$(subst libgcc.a, ,$(shell $(CC) -print-libgcc-file-name 2> /dev/null)) -lgcc
 
 INCLUDE_DIR = include
-DDR_COMMON = ddr/common
-ifeq ("$(DEVICE)", "RZV2L")
-DDR_SOC    = ddr/v2l
-else ifeq ("$(DEVICE)", "RZG2UL")
-DDR_SOC    = ddr/g2ul
-else ifeq ("$(DEVICE)", "RZA3UL")
-DDR_SOC    = ddr/g2ul
+ifneq ("$(DEVICE)", "RZV2H")
+INCLUDE_DIR += -I include/g2l
 else
-DDR_SOC    = ddr/g2l
+INCLUDE_DIR += -I include/v2h
+endif
+
+DDR_COMMON = drivers/ddr/common
+ifeq ("$(DEVICE)", "RZV2L")
+DDR_SOC    = drivers/ddr/v2l
+else ifeq ("$(DEVICE)", "RZG2UL")
+DDR_SOC    = drivers/ddr/g2ul
+else ifeq ("$(DEVICE)", "RZA3UL")
+DDR_SOC    = drivers/ddr/g2ul
+else ifeq ("$(DEVICE)", "RZV2H")
+DDR_SOC    = drivers/ddr/v2h
+else
+DDR_SOC    = drivers/ddr/g2l
 endif
 TOOL_DEF = "REWRITE_TOOL"
 
@@ -381,61 +417,99 @@ OBJ_FILE_BOOT =				\
 	$(OBJECT_DIR)/boot_mon.o	\
 	$(OBJECT_DIR)/stack.o
 
-SRC_FILE :=				\
-	main.c				\
-	init_scif.c			\
-	scifdrv.c			\
-	devdrv.c			\
-	common.c			\
-	dgtable.c			\
-	dgmodul1.c			\
-	memory_cmd.c			\
-	Message.c			\
-	ramckmdl.c			\
-	cpudrv.c			\
-	sys/syc.c			\
-	sys/sysc.c			\
-	sys/cpg.c			\
-	sys/pfc.c			\
-	sys/tzc_400.c
+# Source files common to all configurations
+SRC_FILE := 					\
+    main.c 						\
+    io.c 						\
+    common.c 					\
+    dg_modul1.c 					\
+    dg_memory.c 				\
+    ramckmdl.c 					\
+    timer.c
 
-ifeq ("$(INTERNAL_MEMORY_ONLY)", "DISABLE")
-SRC_FILE +=				\
-	ddrcheck.c			\
-	ddr/common/ddr.c
+# Device-specific source files for RZG2L
+ifneq ($(filter $(DEVICE),RZG2L RZV2L RZG2UL RZA3UL),)
+SRC_FILE += 					\
+    drivers/sys/g2l/syc.c 		\
+    drivers/sys/g2l/sys.c 		\
+    drivers/sys/g2l/cpg.c 		\
+    drivers/sys/g2l/pfc.c 		\
+    drivers/sys/g2l/tzc_400.c 	\
+    drivers/sys/g2l/wdt.c
+# Device-specific source files for RZV2H
+else ifeq ($(DEVICE),RZV2H)
+SRC_FILE += 					\
+    drivers/sys/v2h/syc.c 		\
+    drivers/sys/v2h/sys.c 		\
+    drivers/sys/v2h/cpg.c 		\
+    drivers/sys/v2h/pfc.c 		\
+    drivers/sys/v2h/tzc_400.c 	\
+    drivers/sys/v2h/wdt.c
 endif
-ifeq ("$(DEVICE)", "RZV2L")
-SRC_FILE +=				\
-	ddr/v2l/ddr_v2l.c
-else ifeq ("$(DEVICE)", "RZG2UL")
-SRC_FILE +=				\
-	ddr/g2ul/ddr_g2ul.c
-else ifeq ("$(DEVICE)", "RZA3UL")
-SRC_FILE +=				\
-	ddr/g2ul/ddr_g2ul.c
+SRC_FILE += 					\
+	drivers/scif/init_scif.c 	\
+	drivers/scif/scifdrv.c
+
+# DDR-related source files for non-internal memory
+ifneq ($(DDR_TYPE),INTERNAL_MEMORY)
+SRC_FILE += \
+    ddrcheck.c
+endif
+
+# DDR-specific source files
+ifeq ($(DEVICE),RZV2H)
+ifeq ($(DDR_TYPE),LPDDR4X)
+SRC_FILE += \
+    drivers/ddr/v2h/ddr.c \
+    drivers/ddr/v2h/ddr_misc.c \
+    drivers/ddr/v2h/ddr_param_def_lpddr4.c \
+    drivers/ddr/v2h/ddr_retcsr_lpddr4.c \
+    drivers/ddr/v2h/ddr_setup_lpddr4.c
+endif
 else
-SRC_FILE +=				\
-	ddr/g2l/ddr_g2l.c
+SRC_FILE += drivers/ddr/common/ddr.c
+ifeq ($(DEVICE),RZV2L)
+SRC_FILE += \
+    drivers/ddr/v2l/ddr_v2l.c
+else ifeq ($(DEVICE),RZG2UL)
+SRC_FILE += \
+    drivers/ddr/g2ul/ddr_g2ul.c
+else ifeq ($(DEVICE),RZA3UL)
+SRC_FILE += \
+    drivers/ddr/g2ul/ddr_g2ul.c
+else ifeq ($(DEVICE),RZG2L)
+SRC_FILE += \
+    drivers/ddr/g2l/ddr_g2l.c
+endif
 endif
 
-ifeq ("$(SERIAL_FLASH)", "ENABLE")
-SRC_FILE +=				\
-	dgmodul4.c			\
-	rpcqspidrv.c			\
-	spiflash1drv.c
+# Serial flash source files
+ifeq ($(SERIAL_FLASH),ENABLE)
+SRC_FILE += \
+    dg_modul4.c
+    ifeq ($(FLASH_TYPE),QSPI)
+SRC_FILE += \
+    drivers/spi/qspi/rpcqspidrv.c \
+    drivers/spi/qspi/spiflash1drv.c
+    else ifeq ($(FLASH_TYPE),XSPI)
+SRC_FILE += \
+    drivers/spi/xspi/xspiflash1drv.c \
+    drivers/spi/xspi/xspi_puccini.c
+    endif
 endif
 
-ifeq ("$(EMMC)", "ENABLE")
-SRC_FILE +=				\
-	dg_emmc_config.c		\
-	dg_emmc_access.c		\
-	emmc_cmd.c			\
-	emmc_init.c			\
-	emmc_interrupt.c		\
-	emmc_mount.c			\
-	emmc_write.c			\
-	emmc_erase.c			\
-	emmc_utility.c
+# eMMC source files
+ifeq ($(EMMC),ENABLE)
+SRC_FILE += 						\
+    dg_emmc_config.c 				\
+    dg_emmc_access.c 				\
+    drivers/emmc/emmc_cmd.c 		\
+    drivers/emmc/emmc_init.c 		\
+    drivers/emmc/emmc_interrupt.c 	\
+    drivers/emmc/emmc_mount.c 		\
+    drivers/emmc/emmc_write.c 		\
+    drivers/emmc/emmc_erase.c 		\
+    drivers/emmc/emmc_utility.c
 endif
 
 OBJ_FILE := $(addprefix $(OBJECT_DIR)/,$(patsubst %.c,%.o,$(SRC_FILE)))

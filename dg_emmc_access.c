@@ -10,33 +10,13 @@
 #include "emmc_def.h"
 #include "emmc_registers.h"
 
-#include "dgemmc.h"
+#include "dg_emmc.h"
 #include "common.h"
 #include "types.h"
 
 #include "ramckmdl.h"
-#include "dgmodul1.h"
-#include "devdrv.h"
-
-#define	SIZE2SECTOR(x)			( (x) >> 9 )	/* 512Byte		*/
-
-#define	EMMC_MAX_SIZE			8		/* 8 Gbyte		*/
-#define	EMMC_MAX_SECTOR			((SIZE2SECTOR( EMMC_MAX_SIZE * 1024 )) * 1024 * 1024 ) /* MAX SECTOR (8Gbyte) */
-#define	MULTI_PARTITION_SIZE		(128 * 1024)	/* 128 Kbyte	*/
-
-#define	EMMC_WORK_DRAM_SADD		0x50000000U
-#define	EMMC_WORK_DRAM_EADD_2M		0x501FFFFFU
-#define	EMMC_WORK_DRAM_EADD_4M		0x503FFFFFU
-#define	EMMC_WORK_DRAM_EADD_16M		0x50FFFFFFU
-#define	EMMC_WORK_DRAM_EADD_64M		0x53FFFFFFU
-#define	EMMC_WORK_DRAM_EADD_512M	0x6FFFFFFFU
-#define	EMMC_WORK_DRAM_SECTOR_MAX	((EMMC_WORK_DRAM_EADD_512M - EMMC_WORK_DRAM_SADD + 1)>>9)
-
-#define	EMMC_SECURERAM_SADD		0xE6300000U
-#define	EMMC_SECURERAM_EADD		0xE635FFFFU
-
-#define	DMA_TRANSFER_SIZE		(0x20)		/* DMA Transfer size =  32 Bytes*/
-#define	DMA_ROUNDUP_VALUE		(0xFFFFFFE0)
+#include "dg_modul1.h"
+#include "io.h"
 
 typedef enum
 {
@@ -233,15 +213,15 @@ void	dg_emmc_write(EMMC_WRITE_COMMAND wc)
 	switch(partitionArea)
 	{
 		case EMMC_PARTITION_USER_AREA:		//User Partition Area Program
-			Load_workEndAdd		= (uint32_t*)EMMC_WORK_DRAM_EADD_512M;
+			Load_workEndAdd		= (uint32_t*)EMMC_WORK_DRAM_EADD_USER;
 			PutStr("-- User Partition Area Program --------------------------",1);
 		break;
 		case EMMC_PARTITION_BOOT_1:		//Boot Partition 1 Program
-			Load_workEndAdd		= (uint32_t*)EMMC_WORK_DRAM_EADD_16M;
+			Load_workEndAdd		= (uint32_t*)EMMC_WORK_DRAM_EADD_BOOT1;
 			PutStr("-- Boot Partition 1 Program -----------------------------",1);
 		break;
 		case EMMC_PARTITION_BOOT_2:		//Boot Partition 2 Program
-			Load_workEndAdd		= (uint32_t*)EMMC_WORK_DRAM_EADD_16M;
+			Load_workEndAdd		= (uint32_t*)EMMC_WORK_DRAM_EADD_BOOT2;
 			PutStr("-- Boot Partition 2 Program -----------------------------",1);
 		break;
 	}
