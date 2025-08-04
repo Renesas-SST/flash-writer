@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020, Renesas Electronics Corporation. All rights reserved.
+ * Copyright (c) 2020-2025, Renesas Electronics Corporation. All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -32,8 +32,8 @@
  *********************************************************************************************************************/
 
 /**********************************************************************************************************************
- Exported global functions
+ Global functions
  *********************************************************************************************************************/
-extern void init_tzc_400_spimulti(void);
+void init_tzc_400(void);
 
 #endif /* DRIVERS_TZC_400_INC_TZC_400_H_ */

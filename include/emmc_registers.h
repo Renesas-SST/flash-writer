@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2016, Renesas Electronics Corporation. All rights reserved.
+ * Copyright (c) 2015-2025, Renesas Electronics Corporation. All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -14,20 +14,17 @@
 #define __EMMC_REGISTERS_H__
 
 /* ************************ HEADER (INCLUDE) SECTION *********************** */
-
+#ifndef RZV2H
+#include <rzg2l_def.h>
+#else
+#include <rzv2h_def.h>
+#endif
 /* ***************** MACROS, CONSTANTS, COMPILATION FLAGS ****************** */
 /* MMC channel select */
 #define MMC_CH0		(0U)		/* SDHI2/MMC0 */
 #define MMC_CH1		(1U)		/* SDHI3/MMC1 */
 
 #define USE_MMC_CH	(MMC_CH0)
-
-
-/** @brief eMMC registers
- */
-#define	MMC0_SD_BASE		(0x11C00000U)
-#define MMC1_SD_BASE		(0x11C10000U)
-
 
 #if USE_MMC_CH == MMC_CH0
 #define	MMC_SD_BASE		(MMC0_SD_BASE)

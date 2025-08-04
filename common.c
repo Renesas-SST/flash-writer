@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2021, Renesas Electronics Corporation. All rights reserved.
+ * Copyright (c) 2015-2025, Renesas Electronics Corporation. All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -7,9 +7,9 @@
 #include <stddef.h>
 #include "types.h"
 #include "common.h"
-#include "devdrv.h"
+#include "io.h"
+#include <stdbool.h>
 
-__attribute__((aligned(32))) uint8_t	gCOMMAND_Area[COMMAND_BUFFER_SIZE];
 extern char gKeyBuf[64];
 
 /************************************************************************/
@@ -43,6 +43,46 @@ int32_t	PutStr(const char *str, char rtn)
 	}
 	return(0);
 
+}
+
+/************************************************************************/
+/*NAME		: PutInt						*/
+/************************************************************************/
+int32_t PutInt(int32_t num, char rtn)
+{
+	// Enough for -2^31 to 2^31-1, plus null terminator
+    char buffer[12];
+    int i = 0;
+
+    // Handle negative numbers
+    if (num < 0) {
+        PutChar('-');
+        num = -num;
+    }
+
+    // Handle zero case
+    if (num == 0) {
+        PutChar('0');
+    } else {
+        // Convert number to string in reverse order
+        while (num > 0) {
+            buffer[i++] = (num % 10) + '0';
+            num /= 10;
+        }
+
+        // Output digits in correct order
+        while (i > 0) {
+            PutChar(buffer[--i]);
+        }
+    }
+
+    // Add CR and LF if rtn is 1
+    if (rtn == 1) {
+        PutChar(CR_CODE);
+        PutChar(LF_CODE);
+    }
+
+    return 0;
 }
 
 /************************************************************************/
@@ -719,3 +759,42 @@ char Data2HexAscii_64(uintptr_t data, char *buf, char size)
 	*buf = 0;
 	return(0);
 }
+
+static bool getHexInput(char* key, char* buf, uint8_t* chPtr, uint32_t* wrData) {
+    char chCnt;
+    GetStr(key, &chCnt);
+    *chPtr = 0;
+
+    if (GetStrBlk(key, buf, chPtr, 0)) {
+        return false;
+    }
+
+    if (*chPtr == 1) {
+        return false; // Case Return
+    }
+
+    if (*chPtr > ((SIZE_32BIT << 1) + 1)) {
+        return false; // Case Data Size Over
+    }
+
+    return !HexAscii2Data((unsigned char*)buf, wrData);
+}
+
+bool getUserInput(uint32_t* value, const char* prompt) {
+    char buf[16], key[16];
+    uint8_t chPtr;
+    uint32_t wrData;
+
+    while (true) {
+        PutStr(prompt, 0);
+        if (getHexInput(key, buf, &chPtr, &wrData)) {
+            if (buf[0] == '.') {
+                return false; // Indicate dot was entered
+            }
+            *value = wrData;
+            return true; // Indicate valid input
+        }
+        PutStr("Syntax Error", 1);
+        return false;
+    }
+} 

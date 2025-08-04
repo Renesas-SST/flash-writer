@@ -12,7 +12,7 @@
 #include "emmc_def.h"
 #undef __EMMC_GLOBAL_DEFINE__
 
-#include "dgemmc.h"
+#include "dg_emmc.h"
 #include "common.h"
 #include "bit.h"
 #include "types.h"

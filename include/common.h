@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2021, Renesas Electronics Corporation. All rights reserved.
+ * Copyright (c) 2015-2025, Renesas Electronics Corporation. All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -8,6 +8,7 @@
 #define COMMON_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 #ifdef AArch64
 //typedef uint64_t    uintptr_t;
@@ -46,6 +47,7 @@
 ****************************/
 int32_t PutMess(const char *const mess[]);
 int32_t	PutStr(const char *str,char rtn);
+int32_t PutInt(int32_t num, char rtn);
 int32_t	GetStr(char *str,char *chCnt);
 uint32_t Hex2Ascii(int32_t hexdata,char *str,int32_t *chcnt);
 uint32_t Hex2DecAscii(int32_t hexdata,char *str,int32_t *chcnt);
@@ -65,4 +67,5 @@ char DecodeForm03(uintptr_t *para1st, uintptr_t *para2nd, uintptr_t *para3rd, ui
 int32_t	GetStr_MemEd(char *str,char *chCnt);
 char HexAscii2Data_64(unsigned char *buf,uintptr_t *data);
 char Data2HexAscii_64(uintptr_t data,char *buf,char size);
+bool getUserInput(uint32_t* value, const char* prompt);
 #endif
