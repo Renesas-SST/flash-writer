@@ -234,12 +234,17 @@ static uint32_t CheckQspiFlashId(void)
 				break;
 			}
 		break;
-		case DIALOG_MANUFACTURER_ID:
-			PutStr(" Dialog : ", 0);
+		case RENESAS_MANUFACTURER_ID:
+			PutStr(" Renesas : ", 0);
 			switch(deviceId)
 			{
 				case DEVICE_ID_AT25QL128A:
 						PutStr("AT25QL128A", 1);
+						gQspi_sa_size    = SA_64KB;
+						gQspi_end_addess = TOTAL_SIZE_16MB - 0x8000 - 1;
+				break;
+				case DEVICE_ID_AT25SF128A:
+						PutStr("AT25SF128A", 1);
 						gQspi_sa_size    = SA_64KB;
 						gQspi_end_addess = TOTAL_SIZE_16MB - 0x8000 - 1;
 				break;

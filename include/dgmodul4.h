@@ -39,7 +39,7 @@
 #define	WINBOND_MANUFACTURER_ID		0xEF	/* Winbond	*/
 #define	MACRONIX_MANUFACTURER_ID	0xC2	/* Macronix	*/
 #define	MICRON_MANUFACTURER_ID		0x20	/* Micron	*/
-#define	DIALOG_MANUFACTURER_ID		0x1F	/* Dialog	*/
+#define	RENESAS_MANUFACTURER_ID		0x1F	/* Renesas	*/
 #define	ISS_MANUFACTURER_ID		0x9D    /* ISS          */
 
 #define	DEVICE_ID_IS25WP256		0x7019
@@ -76,7 +76,8 @@
 #define	DEVICE_ID_MT25QL02G		0xBA22
 #define	DEVICE_ID_MT25QU02G		0xBB22
 
-#define	DEVICE_ID_AT25QL128A		0x4218
+#define	DEVICE_ID_AT25QL128A	0x4218
+#define	DEVICE_ID_AT25SF128A	0x8901
 
 void InitRPC_Mode(void);
 void mem_copy(uint32_t prgStartAd, uint32_t sector_Ad, uint32_t accessSize);
