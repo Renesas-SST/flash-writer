@@ -249,7 +249,7 @@ OUTPUT_DIR  = AArch64_output
 OBJECT_DIR  = AArch64_obj
 CROSS_COMPILE ?= aarch64-elf-
 
-CFLAGS += -O0 -fno-stack-protector -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-builtin
+CFLAGS += -O0 -fno-stack-protector -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-builtin -fno-pic
 BOOT_DEF    = Writer
 ifeq ("$(DDR_TYPE)", "INTERNAL_MEMORY")
 FILE_NAME   = $(OUTPUT_DIR)/Flash_Writer_SCIF$(FILENAME_ADD)_$(DDR_TYPE)
@@ -371,7 +371,7 @@ ifeq ("$(EMMC_IOV)", "1_8V")
 endif
 
 ifeq ("$(DDR_TYPE)", "INTERNAL_MEMORY")
-	CFLAGS += -Os -DINTERNAL_MEMORY_ONLY=1
+	CFLAGS += -DINTERNAL_MEMORY_ONLY=1
 	LINKER_FILE = memory_writer_internal.def.s
 else
 	CFLAGS += -DINTERNAL_MEMORY_ONLY=0
