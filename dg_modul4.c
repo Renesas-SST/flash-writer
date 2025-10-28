@@ -57,8 +57,9 @@ const FlashDeviceConfig micronDevices[] __attribute__((section(".rodata"))) = {
     {DEVICE_ID_MT25QU02G, "MT25QU02G", SA_64KB, TOTAL_SIZE_256MB}
 };
 
-const FlashDeviceConfig dialogDevices[] __attribute__((section(".rodata"))) = {
-    {DEVICE_ID_AT25QL128A, "AT25QL128A", SA_64KB, TOTAL_SIZE_16MB}
+const FlashDeviceConfig renesasDevices[] __attribute__((section(".rodata"))) = {
+    {DEVICE_ID_AT25QL128A, "AT25QL128A", SA_64KB, TOTAL_SIZE_16MB},
+    {DEVICE_ID_AT25SF128A, "AT25SF128A", SA_64KB, TOTAL_SIZE_16MB}
 };
 
 const FlashDeviceConfig issDevices[] __attribute__((section(".rodata"))) = {
@@ -71,7 +72,7 @@ const Manufacturer supportedManufacturers[] __attribute__((section(".rodata"))) 
     {WINBOND_MANUFACTURER_ID,  "Winbond",  winbondDevices,  sizeof(winbondDevices) / sizeof(winbondDevices[0])},
     {MACRONIX_MANUFACTURER_ID, "Macronix", macronixDevices, sizeof(macronixDevices) / sizeof(macronixDevices[0])},
     {MICRON_MANUFACTURER_ID,   "Micron",   micronDevices,   sizeof(micronDevices) / sizeof(micronDevices[0])},
-    {DIALOG_MANUFACTURER_ID,   "Dialog",   dialogDevices,   sizeof(dialogDevices) / sizeof(dialogDevices[0])},
+    {RENESAS_MANUFACTURER_ID,   "Renesas",   renesasDevices,   sizeof(renesasDevices) / sizeof(renesasDevices[0])},
     {ISS_MANUFACTURER_ID,      "ISS",      issDevices,      sizeof(issDevices) / sizeof(issDevices[0])}
 };
 const size_t supportedManufacturerCount = sizeof(supportedManufacturers) / sizeof(supportedManufacturers[0]);
