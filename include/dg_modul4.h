@@ -68,6 +68,7 @@
 #define	DEVICE_ID_MX25L12805		0x2018
 #define	DEVICE_ID_MX25L25645G		0x2019
 #define	DEVICE_ID_MX25L51245G		0x201A
+#define	DEVICE_ID_MX25U12835E		0x2538
 #define	DEVICE_ID_MX66U25635F		0x2539
 #define	DEVICE_ID_MX66U51235F		0x253A
 #define	DEVICE_ID_MX66UM1G45G		0x803B
@@ -88,32 +89,32 @@
 #define	DEVICE_ID_AT25SF128A		0x8901
 
 typedef struct {
-    uint16_t deviceId;
-    const char* name;
-    uint32_t sectorSize;
-    uint32_t totalSize;
+	uint16_t deviceId;
+	const char* name;
+	uint32_t sectorSize;
+	uint32_t totalSize;
 } FlashDeviceConfig;
 
 // Represents a manufacturer and their supported devices
 typedef struct {
-    uint8_t manufacturerId;
-    const char* name;
-    const FlashDeviceConfig* devices;
-    size_t deviceCount;
+	uint8_t manufacturerId;
+	const char* name;
+	const FlashDeviceConfig* devices;
+	size_t deviceCount;
 } Manufacturer;
 
 typedef struct
 {
-    uint16_t deviceId;
-    uint8_t manufacturerId;
-    uint32_t sectorSize;
-    uint32_t endAddress;
+	uint16_t deviceId;
+	uint8_t manufacturerId;
+	uint32_t sectorSize;
+	uint32_t endAddress;
 } FlashDevice;
 
 // Load format enumeration for clarity
 typedef enum {
-    LOAD_SREC,
-    LOAD_BINARY
+	LOAD_SREC,
+	LOAD_BINARY
 } LoadFormat;
 
 void dgG2InfoSpiflash0_BP(void);
